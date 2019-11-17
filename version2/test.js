@@ -17,32 +17,39 @@ const books = [
       "https://images-na.ssl-images-amazon.com/images/I/515iEcDr1GL._SX258_BO1,204,203,200_.jpg"
   }
 ];
-// - Iterates over the array and outputs the details of each item nto the DOM. 
+// - Iterates over the array and outputs the details of each item nto the DOM.
 // - Displays the items inside an unordered list (created programmatically using JavaScript)
 
-// function getBooksInfo(booksArray) {
-//   booksArray.forEach(book => {
-//     const list = document.createElement('ul');
-//     document.body.appendChild(list);
+function getBooksInfo(booksArray) {
+  booksArray.forEach(book => {
+    const list = document.createElement('ul');
+    document.body.appendChild(list);
 
-//     let listItem = document.createElement('li');
-//     list.appendChild(listItem);
-//     listItem.textContent = book.bookName;
+    // const keysOfBooks = [['bookName'], ['author'], ['coverURL']];
+    // keysOfBooks.forEach(element => {
+    //   let listItem = document.createElement('li');
+    //   list.appendChild(listItem);
+    //   listItem.textContent = book[element];
+    // })
 
-//     listItem = document.createElement('li');
-//     list.appendChild(listItem);
-//     listItem.textContent = book.author;
+    let listItem = document.createElement('li');
+    list.appendChild(listItem);
+    listItem.textContent = book.bookName;
 
-//     listItem = document.createElement('li');
-//     list.appendChild(listItem);
-//     const img = document.createElement('img');
-//     list.appendChild(img);
-//     img.src = book.coverURL;
-//     img.style.width = '150px';
-//   });
-// }
+    listItem = document.createElement('li');
+    list.appendChild(listItem);
+    listItem.textContent = book.author;
 
-// getBooksInfo(books);
+    listItem = document.createElement('li');
+    list.appendChild(listItem);
+    const img = document.createElement('img');
+    list.appendChild(img);
+    img.src = book.coverURL;
+    img.style.width = '150px';
+  });
+}
+
+getBooksInfo(books);
 
 
 // 2.
@@ -51,30 +58,38 @@ const books = [
 // - Uses the following URL: https://jsonplaceholder.typicode.com/users/1
 // - Displays the "name", "email" and "city" of the first person inside an unordered list (created programmatically using JavaScript) 
 
-// function fetchApi(url) {
-//   fetch(url)
-//     .then(data => data.json())
-//     .then(response => {
-//       console.log(response)
-//       const list = document.createElement('ul');
-//       document.body.appendChild(list);
+function fetchApi(url) {
+  fetch(url)
+    .then(data => data.json())
+    .then(response => {
+      // console.log(response)
+      const list = document.createElement('ul');
+      document.body.appendChild(list);
 
-//       let listItem = document.createElement('li');
-//       list.appendChild(listItem);
-//       listItem.textContent = response.name;
+      // const keysOfResponse = [['name'], ['email'], { address: ['city'] }];
+      // keysOfResponse.forEach((element) => {
+      //   let listItem = document.createElement('li');
+      //   list.appendChild(listItem);
+      //   listItem.textContent = response.element;
+      // });
+
+      let listItem = document.createElement('li');
+      list.appendChild(listItem);
+      listItem.textContent = response.name;
 
 
-//       listItem = document.createElement('li');
-//       list.appendChild(listItem);
-//       listItem.textContent = response.email;
+      listItem = document.createElement('li');
+      list.appendChild(listItem);
+      listItem.textContent = response.email;
 
-//       listItem = document.createElement('li');
-//       list.appendChild(listItem);
-//       listItem.textContent = response.address.city;
-//     })
-// }
+      listItem = document.createElement('li');
+      list.appendChild(listItem);
+      listItem.textContent = response.address.city;
+    })
+}
 
-// fetchApi('https://jsonplaceholder.typicode.com/users/1');
+fetchApi('https://jsonplaceholder.typicode.com/users/1');
+
 
 // 3.
 // Write a function that:
@@ -84,7 +99,7 @@ const books = [
 const countries = ["The Netherlands", "Syria", "Turkey", "Mexico", "United States"]
 
 function getLongestNameOfCountry(arrayOfCountries) {
-  const longestCountry = arrayOfCountries.reduce((longest, country) => longest.length > country.length ? longest : country);
+  const longestCountry = arrayOfCountries.reduce((firstCountry, nextCountry) => firstCountry.length > nextCountry.length ? firstCountry : nextCountry);
   console.log(longestCountry);
 }
 
