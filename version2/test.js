@@ -25,27 +25,30 @@ function getBooksInfo(booksArray) {
     const list = document.createElement('ul');
     document.body.appendChild(list);
 
-    // const keysOfBooks = [['bookName'], ['author'], ['coverURL']];
-    // keysOfBooks.forEach(element => {
-    //   let listItem = document.createElement('li');
-    //   list.appendChild(listItem);
-    //   listItem.textContent = book[element];
-    // })
+    Object.entries(book).forEach(([key, value]) => {
+      let listItem = document.createElement('li');
+      list.appendChild(listItem);
+      if (key === 'coverURL') {
+        listItem.innerHTML = `<img style='width:150px' src='${value}'>`;
+      } else {
+        listItem.textContent = value;
+      }
+    })
 
-    let listItem = document.createElement('li');
-    list.appendChild(listItem);
-    listItem.textContent = book.bookName;
+    // let listItem = document.createElement('li');
+    // list.appendChild(listItem);
+    // listItem.textContent = book.bookName;
 
-    listItem = document.createElement('li');
-    list.appendChild(listItem);
-    listItem.textContent = book.author;
+    // listItem = document.createElement('li');
+    // list.appendChild(listItem);
+    // listItem.textContent = book.author;
 
-    listItem = document.createElement('li');
-    list.appendChild(listItem);
-    const img = document.createElement('img');
-    list.appendChild(img);
-    img.src = book.coverURL;
-    img.style.width = '150px';
+    // listItem = document.createElement('li');
+    // list.appendChild(listItem);
+    // const img = document.createElement('img');
+    // list.appendChild(img);
+    // img.src = book.coverURL;
+    // img.style.width = '150px';
   });
 }
 
@@ -58,37 +61,41 @@ getBooksInfo(books);
 // - Uses the following URL: https://jsonplaceholder.typicode.com/users/1
 // - Displays the "name", "email" and "city" of the first person inside an unordered list (created programmatically using JavaScript) 
 
-function fetchApi(url) {
-  fetch(url)
-    .then(data => data.json())
-    .then(response => {
-      // console.log(response)
-      const list = document.createElement('ul');
-      document.body.appendChild(list);
+// function renderData(url) {
+//   fetch(url)
+//     .then(data => data.json())
+//     .then(response => {
 
-      // const keysOfResponse = [['name'], ['email'], { address: ['city'] }];
-      // keysOfResponse.forEach((element) => {
-      //   let listItem = document.createElement('li');
-      //   list.appendChild(listItem);
-      //   listItem.textContent = response.element;
-      // });
+//       const list = document.createElement('ul');
+//       document.body.appendChild(list);
 
-      let listItem = document.createElement('li');
-      list.appendChild(listItem);
-      listItem.textContent = response.name;
+//       const keysOfResponse = ['name', 'email', 'address'];
+//       keysOfResponse.forEach((element) => {
+//         let listItem = document.createElement('li');
+//         list.appendChild(listItem);
+//         if (element === 'address') {
+//           listItem.textContent = response[element].city;
+//         } else {
+//           listItem.textContent = response[element];
+//         }
+//       });
+
+//   let listItem = document.createElement('li');
+//   list.appendChild(listItem);
+//   listItem.textContent = response.name;
 
 
-      listItem = document.createElement('li');
-      list.appendChild(listItem);
-      listItem.textContent = response.email;
+//   listItem = document.createElement('li');
+//   list.appendChild(listItem);
+//   listItem.textContent = response.email;
 
-      listItem = document.createElement('li');
-      list.appendChild(listItem);
-      listItem.textContent = response.address.city;
-    })
-}
+//   listItem = document.createElement('li');
+//   list.appendChild(listItem);
+//   listItem.textContent = response.address.city;
+//     })
+// }
 
-fetchApi('https://jsonplaceholder.typicode.com/users/1');
+// renderData('https://jsonplaceholder.typicode.com/users/1');
 
 
 // 3.
@@ -96,11 +103,11 @@ fetchApi('https://jsonplaceholder.typicode.com/users/1');
 // - Takes in an array of country names
 // - Returns the country with the longest name. 
 // - Uses the following array as an argument: 
-const countries = ["The Netherlands", "Syria", "Turkey", "Mexico", "United States"]
+// const countries = ["The Netherlands", "Syria", "Turkey", "Mexico", "United States"]
 
-function getLongestNameOfCountry(arrayOfCountries) {
-  const longestCountry = arrayOfCountries.reduce((firstCountry, nextCountry) => firstCountry.length > nextCountry.length ? firstCountry : nextCountry);
-  console.log(longestCountry);
-}
+// function getLongestNameOfCountry(arrayOfCountries) {
+//   const longestCountry = arrayOfCountries.reduce((firstCountry, nextCountry) => firstCountry.length > nextCountry.length ? firstCountry : nextCountry);
+//   console.log(longestCountry);
+// }
 
-getLongestNameOfCountry(countries);
+// getLongestNameOfCountry(countries);
